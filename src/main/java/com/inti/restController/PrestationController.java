@@ -49,7 +49,7 @@ public class PrestationController {
 	@PutMapping("/prestations/{idPrestation}")
 	public Prestation updatePrestation(@PathVariable("idPrestation") Long id, @RequestBody Prestation prestation) {
 		Prestation currentPrestation = prestationService.findOne(id);
-		currentPrestation.setId(prestation.getId());
+		currentPrestation.setNom(prestation.getNom());
 		return prestationService.save(currentPrestation);
 	}
 }

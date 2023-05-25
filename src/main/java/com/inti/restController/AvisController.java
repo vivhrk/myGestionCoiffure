@@ -51,7 +51,9 @@ public class AvisController {
 	@PutMapping("/aviss/{idAvis}")
 	public Avis updateAvis(@PathVariable("idAvis") Long id, @RequestBody Avis avis) {
 		Avis currentAvis = avisService.findOne(id);
-		currentAvis.setId(avis.getId());
+		currentAvis.setDescription(avis.getDescription());
+		currentAvis.setTitre(avis.getTitre());
+		currentAvis.setUtilisateur(avis.getUtilisateur());
 		return avisService.save(currentAvis);
 	}
 }
