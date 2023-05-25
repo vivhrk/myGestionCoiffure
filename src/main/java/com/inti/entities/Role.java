@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ROLES", schema = "gestion_utilisateur_db")
+@Table(name = "ROLES", schema = "gestion_salon_coiffure_db")
 public class Role implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

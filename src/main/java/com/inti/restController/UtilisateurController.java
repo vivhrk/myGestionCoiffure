@@ -51,8 +51,8 @@ public class UtilisateurController {
 	@PutMapping("/utilisateurs/{idUtilisateur}")
 	public Utilisateur updateUtilisateur(@PathVariable("idUtilisateur") Long id, @RequestBody Utilisateur utilisateur) {
 		Utilisateur currentUtilisateur = utilisateurService.findOne(id);
-		currentUtilisateur.setNomUtilisateur(utilisateur.getNomUtilisateur());
-		currentUtilisateur.setPrenomUtilisateur(utilisateur.getPrenomUtilisateur());
+		currentUtilisateur.setNom(utilisateur.getNom());
+		currentUtilisateur.setPrenom(utilisateur.getPrenom());
 		currentUtilisateur.setRoles(utilisateur.getRoles());
 		return utilisateurService.save(currentUtilisateur);
 	}
