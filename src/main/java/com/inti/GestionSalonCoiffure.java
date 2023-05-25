@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GestionUtilisateurApplication {
+public class GestionSalonCoiffure {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GestionUtilisateurApplication.class, args);
+		SpringApplication.run(GestionSalonCoiffure.class, args);
 	}
 
 }
