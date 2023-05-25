@@ -6,6 +6,7 @@ import com.inti.entities.Reservation;
 
 
 public interface IReservationService {
+	
 	List<Reservation> findAll();
 
 	Reservation findOne(Long id);
