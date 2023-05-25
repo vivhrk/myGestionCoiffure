@@ -4,6 +4,7 @@ package com.inti.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
@@ -33,6 +35,13 @@ public class Utilisateur implements Serializable {
 	@JoinTable(name = "PROFILS", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
 	
+	@OneToMany(mappedBy = "utilisateur")
+	private List<Reservation> reservations;
+	
+	@OneToMany(mappedBy = "utilisateur")
+	private List<Avis> avis;
+	
+	
 	@Column(unique = true)
 	private String username;
 	private String password;
@@ -41,18 +50,24 @@ public class Utilisateur implements Serializable {
 	public Utilisateur() {
 	}
 
-	public Utilisateur(String nom, String prenom, String login, Date dateNaissance, Set<Role> roles, String username,
-			String password, boolean enabled) {
+
+
+	public Utilisateur(String nom, String prenom, String login, Date dateNaissance, Set<Role> roles,
+			List<Reservation> reservations, List<Avis> avis, String username, String password, boolean enabled) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.login = login;
 		this.dateNaissance = dateNaissance;
 		this.roles = roles;
+		this.reservations = reservations;
+		this.avis = avis;
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 	}
+
+
 
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
@@ -125,13 +140,43 @@ public class Utilisateur implements Serializable {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	
+	
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+
+
+	public List<Avis> getAvis() {
+		return avis;
+	}
+
+
+
+	public void setAvis(List<Avis> avis) {
+		this.avis = avis;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", login="
-				+ login + ", dateNaissance=" + dateNaissance + ", roles=" + roles + ", username=" + username
-				+ ", password=" + password + ", enabled=" + enabled + "]";
+				+ login + ", dateNaissance=" + dateNaissance + ", roles=" + roles + ", avis=" + avis + ", username="
+				+ username + ", password=" + password + ", enabled=" + enabled + "]";
 	}
+
+
+
+	
 	
 	
 
