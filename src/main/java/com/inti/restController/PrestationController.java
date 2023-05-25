@@ -50,6 +50,7 @@ public class PrestationController {
 	public Prestation updatePrestation(@PathVariable("idPrestation") Long id, @RequestBody Prestation prestation) {
 		Prestation currentPrestation = prestationService.findOne(id);
 		currentPrestation.setNom(prestation.getNom());
+		currentPrestation.setReservation(prestation.getReservation());
 		return prestationService.save(currentPrestation);
 	}
 }
