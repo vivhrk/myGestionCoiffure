@@ -36,8 +36,8 @@ public class ReservationController {
 
 	//@RequestMapping(value = "reservations", method = RequestMethod.POST)
 	@PostMapping("/reservations")
-	public Reservation saveReservation(@RequestBody Reservation reservation) {
-		return reservationService.save(reservation);
+	public Reservation saveReservation(@RequestBody Reservation reservations) {
+		return reservationService.save(reservations);
 	}
 
 	//@RequestMapping(value = "reservations/{idReservation}", method = RequestMethod.DELETE)
@@ -48,9 +48,9 @@ public class ReservationController {
 
 	//@RequestMapping(value = "reservations/{idReservation}", method = RequestMethod.PUT)
 	@PutMapping("/reservations/{idReservation}")
-	public Reservation updateReservation(@PathVariable("idReservation") Long id, @RequestBody Reservation reservation) {
+	public Reservation updateReservation(@PathVariable("idReservation") Long id, @RequestBody Reservation reservations) {
 		Reservation currentReservation = reservationService.findOne(id);
-		currentReservation.setDate(reservation.getDate());
+		currentReservation.setDate(reservations.getDate());
 		
 		return reservationService.save(currentReservation);
 	}

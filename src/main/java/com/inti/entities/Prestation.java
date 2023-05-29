@@ -1,5 +1,7 @@
 package com.inti.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,16 +12,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PRESTATIONS", schema = "gestion_salon_coiffure_db")
-public class Prestation {
+public class Prestation implements Serializable {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idPrestation;
 	private String nom;
 	
 	@ManyToOne 
-	private Reservation reservation;
+	private Reservation reservations;
 	
 	public Prestation() {
 		// TODO Auto-generated constructor stub
@@ -27,16 +29,16 @@ public class Prestation {
 
 	public Prestation(Long id, String nom) {
 		super();
-		this.id = id;
+		this.idPrestation = id;
 		this.nom = nom;
 	}
 
 	public Long getId() {
-		return id;
+		return idPrestation;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long idPrestation) {
+		this.idPrestation = idPrestation;
 	}
 
 	public String getNom() {
@@ -49,16 +51,16 @@ public class Prestation {
 	
 
 	public Reservation getReservation() {
-		return reservation;
+		return reservations;
 	}
 
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
+	public void setReservation(Reservation reservations) {
+		this.reservations = reservations;
 	}
 
 	@Override
 	public String toString() {
-		return "Prestation [id=" + id + ", nom=" + nom + ", reservation=" + reservation + "]";
+		return "Prestation [id=" + idPrestation + ", nom=" + nom + ", reservation=" + reservations + "]";
 	}
 
 	

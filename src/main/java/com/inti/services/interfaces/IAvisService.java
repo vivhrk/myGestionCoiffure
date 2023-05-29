@@ -12,5 +12,7 @@ public interface IAvisService {
 	Avis save(Avis avis);
 
 	void delete(Long id);
+	
+	
 }
 

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import com.inti.model.Adresse;
 
+
 @Entity
 @Table(name = "SALONS", schema = "gestion_salon_coiffure_db")
 public class Salon implements Serializable{
@@ -21,17 +22,18 @@ public class Salon implements Serializable{
 	private Long idSalon;
 	private String nom;
 	private Adresse adresse;
+	
 	@ManyToOne
-	@JoinColumn(name="id_reservation")
-	private Reservation reservation;
+	private Reservation reservations;
+	
 	public Salon() {
 		
 	}
-	public Salon(String nom, Adresse adresse, Reservation reservation) {
+	public Salon(String nom, Adresse adresse, Reservation reservations) {
 		super();
 		this.nom = nom;
 		this.adresse = adresse;
-		this.reservation = reservation;
+		this.reservations = reservations;
 	}
 	public Long getIdSalon() {
 		return idSalon;
@@ -52,14 +54,14 @@ public class Salon implements Serializable{
 		this.adresse = adresse;
 	}
 	public Reservation getReservation() {
-		return reservation;
+		return reservations;
 	}
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
+	public void setReservation(Reservation reservations) {
+		this.reservations = reservations;
 	}
 	@Override
 	public String toString() {
-		return "Salon [idSalon=" + idSalon + ", nom=" + nom + ", adresse=" + adresse + ", reservation=" + reservation
+		return "Salon [idSalon=" + idSalon + ", nom=" + nom + ", adresse=" + adresse + ", reservation=" + reservations
 				+ "]";
 	}
 
