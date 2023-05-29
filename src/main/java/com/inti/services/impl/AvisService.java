@@ -14,9 +14,10 @@ public class AvisService implements IAvisService {
 
 	@Autowired
 	AvisRepository avisRepository;
-
+	
 	@Override
 	public List<Avis> findAll() {
+		
 		return avisRepository.findAll();
 	}
 
@@ -34,4 +35,9 @@ public class AvisService implements IAvisService {
 	public void delete(Long id) {
 		avisRepository.deleteById(id);
 	}
+
+
+
+	
+
 }

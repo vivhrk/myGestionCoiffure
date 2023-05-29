@@ -28,9 +28,9 @@ public class SalonService implements ISalonService{
 	}
 
 	@Override
-	public Salon save(Salon salon) {
+	public Salon save(Salon salons) {
 		// TODO Auto-generated method stub
-		return salonRepository.save(salon);
+		return salonRepository.save(salons);
 	}
 
 	@Override

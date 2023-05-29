@@ -28,8 +28,8 @@ public class ReservationService implements IReservationService{
 	}
 
 	@Override
-	public Reservation save(Reservation reservation) {
-		return reservationRepository.save(reservation);
+	public Reservation save(Reservation reservations) {
+		return reservationRepository.save(reservations);
 	}
 
 	@Override

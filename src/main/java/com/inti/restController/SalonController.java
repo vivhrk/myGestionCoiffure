@@ -36,8 +36,8 @@ public class SalonController {
 
 	//@RequestMapping(value = "salons", method = RequestMethod.POST)
 	@PostMapping("/salons")
-	public Salon saveSalon(@RequestBody Salon salon) {
-		return salonService.save(salon);
+	public Salon saveSalon(@RequestBody Salon salons) {
+		return salonService.save(salons);
 	}
 
 	//@RequestMapping(value = "salons/{idSalon}", method = RequestMethod.DELETE)
@@ -48,11 +48,11 @@ public class SalonController {
 
 	//@RequestMapping(value = "salons/{idSalon}", method = RequestMethod.PUT)
 	@PutMapping("/salons/{idSalon}")
-	public Salon updateSalon(@PathVariable("idSalon") Long id, @RequestBody Salon salon) {
+	public Salon updateSalon(@PathVariable("idSalon") Long id, @RequestBody Salon salons) {
 		Salon currentSalon = salonService.findOne(id);
-		currentSalon.setNom(salon.getNom());
-		currentSalon.setAdresse(salon.getAdresse());
-		currentSalon.setReservation(salon.getReservation());
+		currentSalon.setNom(salons.getNom());
+		currentSalon.setAdresse(salons.getAdresse());
+		currentSalon.setReservation(salons.getReservation());
 		
 		return salonService.save(currentSalon);
 }

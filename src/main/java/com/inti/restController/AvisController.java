@@ -18,30 +18,28 @@ import com.inti.services.interfaces.IAvisService;
 @RestController // RestFul ws
 @CrossOrigin
 public class AvisController {
-
-	
 	@Autowired
 	IAvisService avisService;
 
-	// @RequestMapping(value = "aviss", method = RequestMethod.GET)
+	//@RequestMapping(value = "aviss", method = RequestMethod.GET)
 	@GetMapping("/aviss")
 	public List<Avis> findAll() {
 		return avisService.findAll();
 	}
 
-	// @RequestMapping(value = "aviss/{idAvis}", method = RequestMethod.GET)
+	//@RequestMapping(value = "aviss/{idAvis}", method = RequestMethod.GET)
 	@GetMapping("/aviss/{idAvis}")
 	public Avis findOne(@PathVariable("idAvis") Long id) {
 		return avisService.findOne(id);
 	}
 
-	// @RequestMapping(value = "aviss", method = RequestMethod.POST)
+	//@RequestMapping(value = "aviss", method = RequestMethod.POST)
 	@PostMapping("/aviss")
 	public Avis saveAvis(@RequestBody Avis avis) {
 		return avisService.save(avis);
 	}
 
-	// @RequestMapping(value = "aviss/{idAvis}", method = RequestMethod.DELETE)
+	//@RequestMapping(value = "aviss/{idAvis}", method = RequestMethod.DELETE)
 	@DeleteMapping("/aviss/{idAvis}")
 	public void deleteAvis(@PathVariable("idAvis") Long id) {
 		avisService.delete(id);
@@ -53,7 +51,7 @@ public class AvisController {
 		Avis currentAvis = avisService.findOne(id);
 		currentAvis.setDescription(avis.getDescription());
 		currentAvis.setTitre(avis.getTitre());
-		currentAvis.setUtilisateur(avis.getUtilisateur());
+		currentAvis.setUtilisateurs(avis.getUtilisateurs());
 		return avisService.save(currentAvis);
 	}
 }

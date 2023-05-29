@@ -2,6 +2,7 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -35,11 +37,13 @@ public class Utilisateur implements Serializable {
 	@JoinTable(name = "PROFILS", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
 	
-	@OneToMany(mappedBy = "utilisateur")
+	@OneToMany(mappedBy = "utilisateurs")
+	@Transient
 	private List<Reservation> reservations;
 	
-	@OneToMany(mappedBy = "utilisateur")
-	private List<Avis> avis;
+	@OneToMany(mappedBy = "utilisateurs")
+	@Transient
+	private List<Avis> avis = new ArrayList<>();
 	
 	
 	@Column(unique = true)
@@ -170,9 +174,13 @@ public class Utilisateur implements Serializable {
 	@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", login="
-				+ login + ", dateNaissance=" + dateNaissance + ", roles=" + roles + ", avis=" + avis + ", username="
-				+ username + ", password=" + password + ", enabled=" + enabled + "]";
+				+ login + ", dateNaissance=" + dateNaissance + ", username=" + username + ", password=" + password
+				+ ", enabled=" + enabled + "]";
 	}
+
+
+
+
 
 
 
